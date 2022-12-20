@@ -33,7 +33,7 @@ const getOneTask = async (req,res) =>{
 const updateTask = async (req,res) =>{
     const {id:taskID} = req.params;
     try{
-        const task = await Task.findByIdAndUpdate({_id : taskID},req.body,{
+        const task = await Task.findByOneAndUpdate({_id : taskID},req.body,{
             new : true,
             runValidators : true
         });
