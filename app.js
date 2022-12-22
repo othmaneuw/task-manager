@@ -5,6 +5,7 @@ const app = express();
 const connectDB = require('./DB/connect');
 require('dotenv/config');
 const notFound = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 
 const start = async () =>{
@@ -28,8 +29,7 @@ app.use(express.json());
 
 app.use('/api/v1/tasks',tasksRoutes);
 app.use(notFound);
-
-
+app.use(errorHandlerMiddleware);
 const port = 3000;
 
 start();
